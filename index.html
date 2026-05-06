@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Data Mahasiswa</title>
+
+    <!-- Menghubungkan file CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="kotak-besar">
+      <!-- HEADER -->
+      <div class="header">
+        <img
+          src="logo-unipi.jpg"
+          alt="logo"
+          style="
+            width: 60px;
+            height: 60px;
+            vertical-align: middle;
+            margin-right: 10px;
+            mix-blend-mode: screen;
+          "
+        />
+        🎓 Welcome To Campus Insan Pembangunan
+        <p>Professional Campus For Professional Future</p>
+      </div>
+      <div class="garis"></div>
+
+      <!-- TENGAH: SIDEBAR + KONTEN -->
+      <div class="tengah">
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+          <p>MENU UTAMA</p>
+          <a href="#" class="aktif">• Data Mahasiswa</a>
+          <a href="#">• Data Matakuliah</a>
+          <a href="#">• Data Dosen</a>
+          <a href="#">• Data Jurusan</a>
+          <a href="#">• Data KRS</a>
+          <a href="#">• Laporan KHS</a>
+        </div>
+
+        <!-- KONTEN -->
+        <div class="konten">
+          <h3>OLAH DATA MAHASISWA</h3>
+
+          <!-- NOTIFIKASI -->
+          <div id="notif"></div>
+
+          <!-- FORM + FOTO -->
+          <table class="form-tabel">
+            <tr>
+              <td>
+                <!-- FORM INPUT -->
+                <table class="form-tabel">
+                  <tr>
+                    <td>NIM</td>
+                    <td>
+                      <input type="text" id="nim" oninput="updateLabel()" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Nama Mahasiswa</td>
+                    <td>
+                      <input type="text" id="nama" oninput="updateLabel()" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Alamat</td>
+                    <td><input type="text" id="alamat" /></td>
+                  </tr>
+                  <tr>
+                    <td>Jenis Kelamin</td>
+                    <td>
+                      <input type="radio" name="jk" value="Pria" /> Pria &nbsp;
+                      <input type="radio" name="jk" value="Wanita" /> Wanita
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Jurusan</td>
+                    <td>
+                      <select id="jurusan">
+                        <option value="">-- Pilih Jurusan --</option>
+                        <option>Sistem Informasi</option>
+                        <option>Teknik Informatika</option>
+                        <option>Manajemen Informatika</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td style="padding-top: 8px">
+                      <button class="tombol-simpan" onclick="simpan()">
+                        Simpan
+                      </button>
+                      <button class="tombol-bersih" onclick="bersihkan()">
+                        Bersihkan
+                      </button>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+
+              <!-- FOTO -->
+              <td
+                style="
+                  padding-left: 20px;
+                  vertical-align: top;
+                  text-align: center;
+                "
+              >
+                <div
+                  class="kotak-foto"
+                  id="kotak-foto"
+                  onclick="klikFoto()"
+                  title="Klik untuk upload foto"
+                >
+                  <span id="ikon-foto">📷</span>
+                  <img id="gambar-foto" src="" style="display: none" />
+                </div>
+                <input
+                  type="file"
+                  id="input-foto"
+                  accept="image/*"
+                  onchange="uploadFoto(event)"
+                  style="display: none"
+                />
+                <div class="nim-label" id="label-nim">—</div>
+                <div class="nama-label" id="label-nama">—</div>
+              </td>
+            </tr>
+          </table>
+
+          <!-- PANEL UPLOAD -->
+          <div id="panel-upload">
+            ✅ Data tersimpan! Sekarang upload foto. &nbsp;
+            <button class="tombol-upload" onclick="klikFoto()">
+              Upload Foto
+            </button>
+          </div>
+
+          <!-- TABEL DATA -->
+          <div
+            id="pesan-kosong"
+            style="font-size: 13px; color: #888; padding: 8px 0"
+          >
+            Belum ada data. Isi form lalu klik <b>Simpan</b>.
+          </div>
+
+          <table id="tabel-data" style="display: none">
+            <thead>
+              <tr>
+                <th>NIM</th>
+                <th>Nama</th>
+                <th>Jenis Kelamin</th>
+                <th>Jurusan</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="isi-tabel"></tbody>
+          </table>
+        </div>
+        <!-- AKHIR KONTEN -->
+      </div>
+      <!-- AKHIR TENGAH -->
+
+      <!-- FOOTER -->
+      <div class="footer">
+        Copyrights by UNIVERSITAS INSAN PEMBANGUNAN INDONESIA &copy; 2026
+      </div>
+    </div>
+
+    <!-- Menghubungkan file JavaScript -->
+    <script src="script.js"></script>
+  </body>
+</html>
